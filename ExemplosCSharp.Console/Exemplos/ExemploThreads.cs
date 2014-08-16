@@ -19,26 +19,22 @@ namespace ExemplosCSharp.Console.Exemplos
 
     public static void Minimo(this int[] array)
     {
-      Thread thread = new Thread(RecuperarMinimo);
-      thread.Start(array);
+      new Thread(RecuperarMinimo).Start(array);
     }
 
     public static void Maximo(this int[] array)
     {
-      Thread thread = new Thread(RecuperarMaximo);
-      thread.Start(array);
+      new Thread(RecuperarMaximo).Start(array);
     }
 
     private static void RecuperarMinimo(object array)
     {
-      var a = (array as int[]);
-      System.Console.WriteLine("Valor Mínimo é: " + a.Min());
+      System.Console.WriteLine("Valor Mínimo é: " + (array as int[]).Min());
     }
 
     private static void RecuperarMaximo(object array)
     {
-      var a = (array as int[]);
-      System.Console.WriteLine("Valor Máximo é: " + a.Max());
+      System.Console.WriteLine("Valor Máximo é: " + (array as int[]).Max());
     }
   }
 }
