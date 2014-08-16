@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using console = System.Console;
 
 namespace ExemplosCSharp.Console.Exemplos
 {
@@ -19,22 +20,16 @@ namespace ExemplosCSharp.Console.Exemplos
 
     public static void Minimo(this int[] array)
     {
-      new Thread(RecuperarMinimo).Start(array);
+      new Thread(t => {
+        console.WriteLine("Valor Mínimo é: " + array.Min());
+      }).Start();
     }
 
     public static void Maximo(this int[] array)
     {
-      new Thread(RecuperarMaximo).Start(array);
-    }
-
-    private static void RecuperarMinimo(object array)
-    {
-      System.Console.WriteLine("Valor Mínimo é: " + (array as int[]).Min());
-    }
-
-    private static void RecuperarMaximo(object array)
-    {
-      System.Console.WriteLine("Valor Máximo é: " + (array as int[]).Max());
+      new Thread(t =>{
+        console.WriteLine("Valor Máximo é: " + array.Max());
+      }).Start();
     }
   }
 }
